@@ -1,5 +1,8 @@
 @ECHO OFF
-goto UNLOCK
+goto START
+:START
+if EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" goto UNLOCK
+if NOT EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" echo Fatal error: Run Configure.bat first!
 :UNLOCK
 echo Enter password to Unlock Your Secure Folder
 set/p "pass=>"
