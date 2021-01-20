@@ -2,7 +2,7 @@
 goto START
 :START
 if EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" goto UNLOCK
-if NOT EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" echo Fatal error: Run Configure.bat first!
+if NOT EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" goto FAILED
 :UNLOCK
 echo Enter password to Unlock Your Secure Folder
 set/p "pass=>"
@@ -21,4 +21,8 @@ attrib +h +s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
 echo Session expired
 timeout /t 1 >nul
 goto End
+:FAILED
+echo Fatal error, run config.bat twice first!
+timeout /t 3 >nul
+goto end
 :End
